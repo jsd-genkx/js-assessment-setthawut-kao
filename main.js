@@ -35,42 +35,42 @@ class Field {
 
 	handleMove(direction) {
         switch (direction.toLowerCase()) {
-            case 'u':
+            case "u":
                 this.positionRow -= 1;
                 break;
-            case 'd':
+            case "d":
                 this.positionRow += 1;
                 break;
-            case 'l':
+            case "l":
                 this.positionCol -= 1;
                 break;
-            case 'r':
+            case "r":
                 this.positionCol += 1;
                 break;
             default:
-                console.log('Invalid direction. Please use u, d, l, or r.');
-                return 'continue';
+                console.log("Invalid direction. Please use u, d, l, or r.");
+                return "continue";
         }
 
 		if (this.positionRow < 0 || this.positionRow >= this.field.length || this.positionCol < 0 || this.positionCol >= this.field[0].length) {
-            console.log('Out of bounds instruction! You lose.');
-            return 'lose';
+            console.log("🚫 You went out of bounds! Game over.");
+            return "lose";
         }
         const landingSpot = this.field[this.positionRow][this.positionCol];
         if (landingSpot === hole) {
-            console.log('Sorry, you fell down a hole! You lose.');
-            return 'lose';
+            console.log("Sorry, 💀 You fell into a hole! Game over.");
+            return "lose";
         } else if (landingSpot === hat) {
-            console.log('Congrats, you found your hat! You win!');
-            return 'win';
+            console.log("Congrats, 🎉 You found the hat! You win!");
+            return "win";
         }
 
         this.field[this.positionRow][this.positionCol] = pathCharacter;
-        return 'continue';
+        return "continue";
     }
 
 	playGame() {
-    let gameStatus = 'continue';
+    let gameStatus = "continue";
     while (gameStatus === 'continue') {
       this.print();
       const move = prompt("Which way? (u=up, d=down, l=left, r=right) ");
@@ -85,6 +85,6 @@ class Field {
 const newGame = new Field([
 	["░", "░", "O"],
 	["░", "O", "░"],
-	["░", "^", "░"],
+	["░", "░", "^"],
 ]);
 newGame.playGame()

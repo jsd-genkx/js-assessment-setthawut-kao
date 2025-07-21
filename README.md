@@ -131,10 +131,26 @@
 
 ### Thinking Process
 
-1. // step 1
-2. // step 2
-3. // ...
-4. // step n
+1.สร้าง field โดยการลบ console.log(this.field); ที่ line 29 เเละเพิ่ม
+for (const row of this.field) {
+console.log(row.join(""));
+}
+เเละลอง newGame.print(); เพื่อดูว่าเเผนที่ขึ้นมาเเล้ว
+
+2.สร้าง fn การเดินด้วย switch case โดยการเรียก this.positionRow, this.positionCol มาจาก Class field
+โดย จุดยืนของ Char คือ index 0, 0
+เมื่อกด u จะ -1 จากจุดแนวนอน(Row)จากปัจจุบัน ก็คือขึ้นข้างบน
+เมื่อกด d จะ +1 จากจุดแนวนอน(Row)จากปัจจุบัน ก็คือลงข้างล่าง
+เมื่อกด l จะ -1 จากจุดแนวตั้ง(Col)จากปัจจุบัน ก็คือมาทางซ้าย
+เมื่อกด r จะ +1 จากจุดแนวตั้ง(Col)จากปัจจุบัน ก็คือมาทางขวา
+เเละเมื่อ ใส่ค่าอื่นๆ นอกจาก U, D, L ,R จะเเสดงข้อความ "Invalid direction. Please use u, d, l, or r." เเละให้ return continue เพื่อเดินใหม่
+
+3.สร้าง loop เช็คสถานะ Char ให้มีเงื่อนไขให้มีการออกนอก field = เเพ้,เดินไปเจอหลุม = เเพ้ ,หากเดินไปเจอหมวก = ชนะ
+
+4.สร้าง fn playGame โดยประกาศ gameStatus = continue เเละใช้ loop while โดยเมื่อ gameStatus === continue อยู่ จะให้เเสดงข้อความ
+"Which way? (u=up, d=down, l=left, r=right)"
+
+5.เปลี่ยนคำสั่งจาก newGame.print -> newGame.playGame เพื่อทดสอบเกมส์ว่าได้ตรงกับที่ต้องการตาม Requiment หรือไม่
 
 _Notes:_<br>
 _- You can attach flowcharts, diagrams, and images as needed._<br>
